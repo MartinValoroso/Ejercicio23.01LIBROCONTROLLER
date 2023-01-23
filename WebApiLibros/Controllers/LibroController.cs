@@ -87,6 +87,15 @@ namespace WebApiLibros.Controllers
 
         }
 
+        [HttpGet("{IdAutor}")] // SELECT POR AUTOR ID 
+        public ActionResult<Libro> GetbyAutor(int id)
+        {
+            Libro libro = (from l in context.Libros
+                           where l.AutorId == id
+                           select l).SingleOrDefault();
+            return libro;
+        }
+
 
     }
 }
